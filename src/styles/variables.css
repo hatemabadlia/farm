@@ -1,0 +1,17 @@
+:root {
+  --fcs-primary: #2E6B3E;
+  --fcs-secondary: #5C9938;
+  --fcs-accent: #A4D152;
+  --fcs-ink: #1B261C;
+  --fcs-light: #F4F7F1;
+
+  --fcs-font-heading: 'Poppins', sans-serif;
+  --fcs-font-body: 'Arial', sans-serif;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: var(--fcs-font-body);
+  color: var(--fcs-ink);
+}

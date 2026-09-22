@@ -1,0 +1,109 @@
+/* ---------- Navbar shell ---------- */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  padding: 14px 48px;
+  height: 100px;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  font-family: var(--fcs-font-body);
+}
+
+/* ---------- Left: logo ---------- */
+.left {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.left .logo {
+  height: 125px;   /* smaller than 100px, tighter like smag */
+  width: auto;
+
+}
+
+/* ---------- Center: nav links ---------- */
+.links {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;                 /* pushes right block to the edge */
+  justify-content: flex-start;  /* links sit next to the logo like smag */
+  margin-left: 24px;
+}
+
+.links a {
+  color: var(--fcs-ink);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;   /* smag vibe */
+  padding: 8px 0;
+  transition: color 0.2s ease;
+}
+
+.links a:hover {
+  color: var(--fcs-primary);
+}
+
+/* ---------- Right: lang + CTA ---------- */
+.right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-shrink: 0;
+}
+
+/* Style the <select> like a small pill (FR | EN feel) */
+.langSelect {
+  appearance: none;
+  -webkit-appearance: none;
+  background: transparent;
+  border: none;
+  color: var(--fcs-ink);
+  font-family: var(--fcs-font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.5px;
+  padding: 8px 22px 8px 8px;   /* space for the little arrow */
+  cursor: pointer;
+  /* tiny chevron drawn in CSS */
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 6px center;
+}
+
+.langSelect:hover {
+  color: var(--fcs-primary);
+}
+
+.langSelect:focus {
+  outline: none;
+}
+
+/* ---------- CTA button ---------- */
+.cta {
+  background: var(--fcs-primary);
+  color: #fff;
+  border: none;
+  border-radius: 999px;      /* full pill like smag */
+  padding: 12px 26px;
+  font-family: var(--fcs-font-body);
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.3px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.15s ease;
+}
+
+.cta:hover {
+  background: var(--fcs-secondary);
+  transform: translateY(-1px);
+}
+
+.cta:active {
+  transform: translateY(0);
+}

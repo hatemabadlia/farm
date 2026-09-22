@@ -1,0 +1,51 @@
+.hero {
+  padding: 80px 48px;
+  background: var(--fcs-light);
+  text-align: left;
+  max-width: 800px;
+}
+.badge {
+  display: inline-block;
+  background: #fff;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-size: 13px;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--fcs-font-heading);
+  font-size: 48px;
+  color: var(--fcs-primary);
+  margin: 0 0 8px;
+}
+.hero h2 {
+  font-family: var(--fcs-font-heading);
+  font-weight: 400;
+  color: var(--fcs-ink);
+  margin: 0 0 16px;
+}
+.hero p {
+  color: #444;
+  line-height: 1.6;
+}
+.actions {
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+}
+.primary, .secondary {
+  padding: 14px 24px;
+  border-radius: 24px;
+  font-weight: bold;
+  cursor: pointer;
+}
+.primary {
+  background: var(--fcs-primary);
+  color: #fff;
+  border: none;
+}
+.secondary {
+  background: transparent;
+  border: 1px solid var(--fcs-primary);
+  color: var(--fcs-primary);
+}
