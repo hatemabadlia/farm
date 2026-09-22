@@ -3,6 +3,10 @@
   background: var(--fcs-light);
   text-align: left;
   max-width: 800px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
 }
 .badge {
   display: inline-block;
@@ -48,4 +52,20 @@
   background: transparent;
   border: 1px solid var(--fcs-primary);
   color: var(--fcs-primary);
+}
+/* زيد هاد الـ 3 قواعد فقط فالـ CSS ديالك، ما تمسح والو */
+
+.videoWrapper {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.video {
+  width: 100%;
+  max-width: 550px;
+  height: auto;
+  border-radius: 20px;
+  object-fit: cover;
 }
