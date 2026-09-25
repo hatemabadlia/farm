@@ -1,0 +1,131 @@
+{
+  "common": {
+    "brand": "Farm Control System",
+    "pagePending": "Cette page sera construite à l'étape suivante."
+  },
+  "nav": {
+    "home": "Accueil",
+    "modules": "Modules",
+    "demos": "Démos",
+    "testimonials": "Témoignages",
+    "about": "À propos",
+    "support": "Accompagnement",
+    "contact": "Contact",
+    "cta": "Demander une démo",
+    "langLabel": "Langue",
+    "primary": "Navigation principale",
+    "openMenu": "Ouvrir le menu",
+    "closeMenu": "Fermer le menu"
+  },
+  "home": {
+    "badge": "Plateforme AgriTech",
+    "title": "Farm Control System",
+    "subtitle": "La gestion intelligente de votre exploitation",
+    "paragraph": "Analysez vos données, planifiez vos interventions, anticipez les risques et prenez des décisions agricoles plus précises grâce à un système d'aide à la décision conçu pour les réalités du terrain.",
+    "ctaPrimary": "Demander une démonstration",
+    "ctaSecondary": "Découvrir la solution",
+    "seeAllModules": "Voir les sept modules",
+    "ctaBandTitle": "Prêt à piloter votre exploitation autrement ?",
+    "ctaBandText": "Demandez une démonstration : nous vous montrons Farm Control System sur vos propres données et répondons à vos questions."
+  },
+  "modules": {
+    "eyebrow": "Modules",
+    "title": "Nos Principaux modules",
+    "subtitle": "Sept modules intégrés pour couvrir l'ensemble de vos besoins.",
+    "items": [
+      {
+        "n": "01",
+        "title": "Gestion des parcelles",
+        "text": "Base de données parcellaire, géolocalisation, historique des cultures et indicateurs de performance."
+      },
+      {
+        "n": "02",
+        "title": "Gestion des stocks & intrants",
+        "text": "Suivi des stocks, mouvements d'intrants, alertes de seuil et traçabilité complète."
+      },
+      {
+        "n": "03",
+        "title": "Gestion de la fertilisation",
+        "text": "Plans de fertilisation, suivi des apports, analyses de sol et recommandations."
+      },
+      {
+        "n": "04",
+        "title": "Protection & suivi phytosanitaire",
+        "text": "Surveillance des ravageurs, gestion des traitements et suivi des interventions."
+      },
+      {
+        "n": "05",
+        "title": "Pilotage de l'irrigation",
+        "text": "Planification de l'irrigation, suivi des consommations et optimisation des ressources en eau."
+      },
+      {
+        "n": "06",
+        "title": "Performance technico-économique",
+        "text": "Analyse des coûts, marges, rendements et indicateurs de rentabilité par parcelle."
+      },
+      {
+        "n": "07",
+        "title": "Système d'aide à la décision",
+        "text": "Recommandations intelligentes, alertes et tableaux de bord pour des décisions optimales."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Demander une démonstration",
+    "intro": "Vous souhaitez découvrir Farm Control System ? Demandez une démonstration personnalisée.",
+    "fullName": "Nom complet",
+    "company": "Entreprise / exploitation",
+    "email": "Adresse email",
+    "phone": "Téléphone",
+    "role": "Fonction",
+    "needType": "Type de besoin",
+    "preferredContact": "Moyen de contact préféré",
+    "message": "Message",
+    "consent": "J'accepte que mes données soient traitées pour répondre à ma demande.",
+    "submit": "Envoyer",
+    "sending": "Envoi en cours...",
+    "successTitle": "Merci !",
+    "successText": "Votre demande a bien été envoyée. Notre équipe vous répondra rapidement.",
+    "backToForm": "Envoyer une autre demande",
+    "needOptions": [
+      "Démonstration",
+      "Devis",
+      "Support technique",
+      "Autre"
+    ],
+    "contactOptions": [
+      "Email",
+      "Téléphone",
+      "WhatsApp"
+    ],
+    "sidebarTitle": "Nous contacter",
+    "contactEmail": "contact@farmcontrolsystem.com",
+    "contactPhone": "+213 XX XX XX XX",
+    "brandTagline": "La gestion intelligente de votre exploitation",
+    "errors": {
+      "required": "Ce champ est obligatoire.",
+      "email": "Adresse email invalide.",
+      "messageShort": "Merci de détailler votre demande (10 caractères minimum).",
+      "consent": "Vous devez accepter le traitement de vos données."
+    }
+  },
+  "about": {
+    "title": "À propos"
+  },
+  "demos": {
+    "title": "Démos"
+  },
+  "testimonials": {
+    "title": "Témoignages"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page introuvable",
+    "text": "La page que vous cherchez n'existe pas ou a été déplacée.",
+    "back": "Retour à l'accueil"
+  },
+  "footer": {
+    "navTitle": "Navigation",
+    "rights": "Tous droits réservés."
+  }
+}

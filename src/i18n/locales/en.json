@@ -1,0 +1,131 @@
+{
+  "common": {
+    "brand": "Farm Control System",
+    "pagePending": "This page will be built in the next step."
+  },
+  "nav": {
+    "home": "Home",
+    "modules": "Modules",
+    "demos": "Demos",
+    "testimonials": "Testimonials",
+    "about": "About",
+    "support": "Support",
+    "contact": "Contact",
+    "cta": "Request a demo",
+    "langLabel": "Language",
+    "primary": "Main navigation",
+    "openMenu": "Open menu",
+    "closeMenu": "Close menu"
+  },
+  "home": {
+    "badge": "AgriTech Platform",
+    "title": "Farm Control System",
+    "subtitle": "Smart management for your farm",
+    "paragraph": "Analyze your data, plan your interventions, anticipate risks and make more accurate farming decisions with a decision-support system built for real field conditions.",
+    "ctaPrimary": "Request a demo",
+    "ctaSecondary": "Discover the solution",
+    "seeAllModules": "See all seven modules",
+    "ctaBandTitle": "Ready to run your farm differently?",
+    "ctaBandText": "Request a demo: we walk you through Farm Control System using your own data and answer your questions."
+  },
+  "modules": {
+    "eyebrow": "Modules",
+    "title": "Our Key Modules",
+    "subtitle": "Seven integrated modules covering all your needs.",
+    "items": [
+      {
+        "n": "01",
+        "title": "Plot management",
+        "text": "Plot database, geolocation, crop history and performance indicators."
+      },
+      {
+        "n": "02",
+        "title": "Stock & input management",
+        "text": "Stock tracking, input movements, threshold alerts and full traceability."
+      },
+      {
+        "n": "03",
+        "title": "Fertilization management",
+        "text": "Fertilization plans, input tracking, soil analyses and recommendations."
+      },
+      {
+        "n": "04",
+        "title": "Crop protection & monitoring",
+        "text": "Pest monitoring, treatment management and intervention tracking."
+      },
+      {
+        "n": "05",
+        "title": "Irrigation control",
+        "text": "Irrigation planning, consumption tracking and water resource optimization."
+      },
+      {
+        "n": "06",
+        "title": "Technical & economic performance",
+        "text": "Analysis of costs, margins, yields and profitability indicators per plot."
+      },
+      {
+        "n": "07",
+        "title": "Decision-support system",
+        "text": "Smart recommendations, alerts and dashboards for optimal decisions."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Request a demo",
+    "intro": "Want to discover Farm Control System? Request a personalized demo.",
+    "fullName": "Full name",
+    "company": "Company / farm",
+    "email": "Email address",
+    "phone": "Phone",
+    "role": "Role",
+    "needType": "Type of request",
+    "preferredContact": "Preferred contact method",
+    "message": "Message",
+    "consent": "I agree that my data will be processed to respond to my request.",
+    "submit": "Send",
+    "sending": "Sending...",
+    "successTitle": "Thank you!",
+    "successText": "Your request has been sent. Our team will get back to you shortly.",
+    "backToForm": "Send another request",
+    "needOptions": [
+      "Demo",
+      "Quote",
+      "Technical support",
+      "Other"
+    ],
+    "contactOptions": [
+      "Email",
+      "Phone",
+      "WhatsApp"
+    ],
+    "sidebarTitle": "Contact us",
+    "contactEmail": "contact@farmcontrolsystem.com",
+    "contactPhone": "+213 XX XX XX XX",
+    "brandTagline": "Smart management for your farm",
+    "errors": {
+      "required": "This field is required.",
+      "email": "Invalid email address.",
+      "messageShort": "Please describe your request (10 characters minimum).",
+      "consent": "You must agree to the processing of your data."
+    }
+  },
+  "about": {
+    "title": "About"
+  },
+  "demos": {
+    "title": "Demos"
+  },
+  "testimonials": {
+    "title": "Testimonials"
+  },
+  "notFound": {
+    "code": "404",
+    "title": "Page not found",
+    "text": "The page you are looking for does not exist or has been moved.",
+    "back": "Back to home"
+  },
+  "footer": {
+    "navTitle": "Navigation",
+    "rights": "All rights reserved."
+  }
+}

@@ -1,0 +1,32 @@
+.code {
+  display: block;
+  font-family: var(--fcs-font-heading);
+  font-size: clamp(3.5rem, 11vw, 5.5rem);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  /* Chiffres en degrade vert plutot qu'en aplat. */
+  background: linear-gradient(140deg, var(--fcs-accent), var(--fcs-primary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: var(--fcs-space-2);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: var(--fcs-space-6);
+  background: var(--fcs-primary);
+  color: #fff;
+  border-radius: var(--fcs-radius-pill);
+  padding: 0.9rem 1.9rem;
+  font-family: var(--fcs-font-heading);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--fcs-shadow-green);
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-fast) var(--fcs-ease);
+}
+.back:hover { background: var(--fcs-primary-dark); transform: translateY(-3px); }

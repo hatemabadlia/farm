@@ -6,6 +6,7 @@ import Demos from '../pages/Demos/Demos';
 import Testimonials from '../pages/Testimonials/Testimonials';
 import About from '../pages/About/About';
 import Contact from '../pages/Contact/Contact';
+import NotFound from '../pages/NotFound/NotFound';
 
 export default function AppRoutes() {
   return (
@@ -16,6 +17,9 @@ export default function AppRoutes() {
       <Route path="/temoignages" element={<Testimonials />} />
       <Route path="/a-propos" element={<About />} />
       <Route path="/contact" element={<Contact />} />
+      {/* Attrape toutes les URL inconnues : avant, on tombait sur une page
+          blanche sous la navbar. */}
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

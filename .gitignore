@@ -1,0 +1,28 @@
+# Dependances : reinstallables via "npm install".
+# Elles etaient committees, et avec des binaires Windows
+# (@esbuild/win32-x64, @rollup/rollup-win32-x64) qui empechaient
+# le projet de demarrer sur macOS / Linux.
+node_modules/
+
+# Build de production
+dist/
+dist-ssr/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+*.log
+
+# Variables d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers systeme / editeur
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp

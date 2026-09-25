@@ -1,109 +1,256 @@
-/* ---------- Navbar shell ---------- */
+/* ---------- Coquille ---------- */
 .navbar {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 40px;
-  padding: 14px 48px;
-  height: 100px;
-  background: #fff;
-  border-bottom: 1px solid #eee;
-  font-family: var(--fcs-font-body);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(14px) saturate(1.6);
+  -webkit-backdrop-filter: blur(14px) saturate(1.6);
+  border-bottom: 1px solid transparent;
+  transition: border-color var(--fcs-normal) var(--fcs-ease),
+              box-shadow var(--fcs-normal) var(--fcs-ease),
+              background var(--fcs-normal) var(--fcs-ease);
 }
 
-/* ---------- Left: logo ---------- */
-.left {
+/* Au scroll, la barre se densifie : bordure + ombre legere. */
+.scrolled {
+  background: rgba(255, 255, 255, 0.94);
+  border-bottom-color: var(--fcs-border);
+  box-shadow: var(--fcs-shadow-sm);
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  gap: var(--fcs-space-5);
+  height: var(--fcs-header-height);
+  max-width: var(--fcs-max-width);
+  margin: 0 auto;
+  padding: 0 var(--fcs-gutter);
+}
+
+/* ---------- Logo ---------- */
+.brand {
   display: flex;
   align-items: center;
   flex-shrink: 0;
+  text-decoration: none;
+  transition: transform var(--fcs-fast) var(--fcs-ease);
 }
+.brand:hover { transform: scale(1.03); }
 
-.left .logo {
-  height: 125px;   /* smaller than 100px, tighter like smag */
+.logo {
+  height: 46px;
   width: auto;
-
+  object-fit: contain;
 }
 
-/* ---------- Center: nav links ---------- */
-.links {
+/* ---------- Navigation bureau ---------- */
+.desktopNav {
   display: flex;
   align-items: center;
-  gap: 32px;
-  flex: 1;                 /* pushes right block to the edge */
-  justify-content: flex-start;  /* links sit next to the logo like smag */
-  margin-left: 24px;
+  gap: clamp(0.9rem, 1.8vw, 1.75rem);
+  flex: 1;
 }
 
-.links a {
+.link {
+  position: relative;
   color: var(--fcs-ink);
   text-decoration: none;
-  font-size: 14px;
+  font-size: var(--fcs-text-sm);
   font-weight: 600;
-  letter-spacing: 0.4px;
-  text-transform: uppercase;   /* smag vibe */
-  padding: 8px 0;
-  transition: color 0.2s ease;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  padding: 0.35rem 0;
+  transition: color var(--fcs-normal) var(--fcs-ease);
 }
 
-.links a:hover {
-  color: var(--fcs-primary);
+/* Soulignement qui se deploie depuis la gauche. */
+.link::after {
+  content: '';
+  position: absolute;
+  inset-inline-start: 0;
+  bottom: -2px;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--fcs-gradient);
+  transform: scaleX(0);
+  transform-origin: inline-start;
+  transition: transform var(--fcs-normal) var(--fcs-ease-out);
 }
 
-/* ---------- Right: lang + CTA ---------- */
-.right {
+.link:hover { color: var(--fcs-primary); }
+.link:hover::after,
+.active::after { transform: scaleX(1); }
+.active { color: var(--fcs-primary); }
+
+.disabled { color: var(--fcs-muted-light); cursor: default; }
+.disabled:hover { color: var(--fcs-muted-light); }
+.disabled::after { display: none; }
+
+/* ---------- Actions (langue + CTA + burger) ---------- */
+.actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: var(--fcs-space-3);
   flex-shrink: 0;
+  margin-inline-start: auto;
 }
 
-/* Style the <select> like a small pill (FR | EN feel) */
 .langSelect {
   appearance: none;
   -webkit-appearance: none;
-  background: transparent;
-  border: none;
-  color: var(--fcs-ink);
-  font-family: var(--fcs-font-body);
+  background-color: transparent;
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-pill);
+  font-size: var(--fcs-text-sm);
   font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.5px;
-  padding: 8px 22px 8px 8px;   /* space for the little arrow */
+  padding: 0.5rem 2rem 0.5rem 0.9rem;
   cursor: pointer;
-  /* tiny chevron drawn in CSS */
-  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23333' stroke-width='1.5' fill='none' stroke-linecap='round'/></svg>");
+  transition: border-color var(--fcs-fast) var(--fcs-ease),
+              color var(--fcs-fast) var(--fcs-ease);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%232E6B3E' stroke-width='1.6' fill='none' stroke-linecap='round'/></svg>");
   background-repeat: no-repeat;
-  background-position: right 6px center;
+  background-position: right 0.75rem center;
 }
-
-.langSelect:hover {
-  color: var(--fcs-primary);
+[dir='rtl'] .langSelect {
+  padding: 0.5rem 0.9rem 0.5rem 2rem;
+  background-position: left 0.75rem center;
 }
+.langSelect:hover { color: var(--fcs-primary); border-color: var(--fcs-primary); }
 
-.langSelect:focus {
-  outline: none;
-}
-
-/* ---------- CTA button ---------- */
 .cta {
+  display: inline-flex;
+  align-items: center;
   background: var(--fcs-primary);
   color: #fff;
-  border: none;
-  border-radius: 999px;      /* full pill like smag */
-  padding: 12px 26px;
-  font-family: var(--fcs-font-body);
+  text-decoration: none;
+  border-radius: var(--fcs-radius-pill);
+  padding: 0.7rem 1.4rem;
+  font-family: var(--fcs-font-heading);
   font-weight: 600;
-  font-size: 14px;
-  letter-spacing: 0.3px;
-  cursor: pointer;
-  transition: background 0.2s ease, transform 0.15s ease;
+  font-size: var(--fcs-text-sm);
+  white-space: nowrap;
+  box-shadow: var(--fcs-shadow-green);
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-fast) var(--fcs-ease),
+              box-shadow var(--fcs-normal) var(--fcs-ease);
 }
-
 .cta:hover {
-  background: var(--fcs-secondary);
-  transform: translateY(-1px);
+  background: var(--fcs-primary-dark);
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(46, 107, 62, 0.34);
+}
+.cta:active { transform: translateY(0); }
+
+/* ---------- Hamburger ---------- */
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0 10px;
+  background: transparent;
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-sm);
+  cursor: pointer;
+}
+.burger span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 2px;
+  background: var(--fcs-ink);
+  transition: transform var(--fcs-normal) var(--fcs-ease),
+              opacity var(--fcs-fast) var(--fcs-ease);
+}
+/* Les trois barres se transforment en croix. */
+.burgerOpen span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.burgerOpen span:nth-child(2) { opacity: 0; }
+.burgerOpen span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ---------- Panneau mobile ---------- */
+.backdrop {
+  position: fixed;
+  inset: var(--fcs-header-height) 0 0 0;
+  background: rgba(27, 38, 28, 0.45);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--fcs-normal) var(--fcs-ease), visibility var(--fcs-normal);
+  z-index: 90;
+}
+.backdropOpen { opacity: 1; visibility: visible; }
+
+.mobileNav {
+  position: fixed;
+  top: var(--fcs-header-height);
+  inset-inline-end: 0;
+  width: min(320px, 85vw);
+  height: calc(100dvh - var(--fcs-header-height));
+  display: flex;
+  flex-direction: column;
+  gap: var(--fcs-space-2);
+  padding: var(--fcs-space-6) var(--fcs-space-5);
+  background: var(--fcs-surface);
+  border-inline-start: 1px solid var(--fcs-border);
+  box-shadow: var(--fcs-shadow-lg);
+  overflow-y: auto;
+  z-index: 95;
+  transform: translateX(100%);
+  visibility: hidden;
+  transition: transform var(--fcs-normal) var(--fcs-ease-out), visibility var(--fcs-normal);
+}
+[dir='rtl'] .mobileNav { transform: translateX(-100%); }
+
+.mobileNavOpen { transform: translateX(0); visibility: visible; }
+
+.mobileNav .link {
+  font-size: var(--fcs-text-lg);
+  padding: var(--fcs-space-3) 0;
+  border-bottom: 1px solid var(--fcs-border);
+  opacity: 0;
+  transform: translateX(14px);
+  transition: opacity var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-normal) var(--fcs-ease-out),
+              color var(--fcs-fast) var(--fcs-ease);
+}
+[dir='rtl'] .mobileNav .link { transform: translateX(-14px); }
+/* Les liens arrivent en cascade une fois le panneau ouvert. */
+.mobileNavOpen .link { opacity: 1; transform: none; }
+.mobileNav .link::after { display: none; }
+
+.mobileCta {
+  margin-top: var(--fcs-space-4);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fcs-primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: var(--fcs-radius-pill);
+  padding: 0.9rem 1.5rem;
+  font-family: var(--fcs-font-heading);
+  font-weight: 600;
+  box-shadow: var(--fcs-shadow-green);
+}
+.mobileCta:hover { background: var(--fcs-primary-dark); }
+
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+/* Sous 1040px la barre complete ne tient plus : on bascule
+   sur le menu lateral au lieu de laisser les liens passer
+   a la ligne. */
+@media (max-width: 1040px) {
+  .desktopNav { display: none; }
+  .burger { display: flex; }
 }
 
-.cta:active {
-  transform: translateY(0);
+@media (max-width: 560px) {
+  .cta { display: none; }        /* le CTA reste dans le menu mobile */
+  .logo { height: 38px; }
 }

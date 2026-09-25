@@ -1,15 +1,15 @@
 import React from 'react';
-import { useLanguage } from '../../context/LanguageContext';
-import dict from './About.dict';
+import { useTranslation } from 'react-i18next';
+import Placeholder from '../../components/Placeholder/Placeholder';
 
 export default function About() {
-  const { lang } = useLanguage();
-  const t = dict[lang];
+  const { t } = useTranslation();
 
   return (
-    <section style={{ padding: '60px 48px' }}>
-      <h1>{t.title}</h1>
-      <p>Cette page sera construite a l'etape suivante.</p>
-    </section>
+    <Placeholder
+      eyebrow={t('common.brand')}
+      title={t('about.title')}
+      text={t('common.pagePending')}
+    />
   );
 }

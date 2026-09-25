@@ -1,17 +1,188 @@
-:root {
-  --fcs-primary: #2E6B3E;
-  --fcs-secondary: #5C9938;
-  --fcs-accent: #A4D152;
-  --fcs-ink: #1B261C;
-  --fcs-light: #F4F7F1;
+/* ============================================================
+   Farm Control System — systeme de design
+   Un seul endroit pour les couleurs, l'echelle typographique,
+   les espacements, les ombres et les durees d'animation.
+   ============================================================ */
 
-  --fcs-font-heading: 'Poppins', sans-serif;
-  --fcs-font-body: 'Arial', sans-serif;
+:root {
+  /* ---------- Charte graphique ---------- */
+  --fcs-primary: #2E6B3E;   /* Deep Forest Green */
+  --fcs-primary-dark: #1F4C2C;
+  --fcs-primary-light: #3D8850;
+  --fcs-secondary: #5C9938; /* Leaf Green */
+  --fcs-accent: #A4D152;    /* Lime Accent */
+  --fcs-ink: #1B261C;
+
+  /* ---------- Neutres ---------- */
+  --fcs-muted: #5C6C60;
+  --fcs-muted-light: #8A9A8E;
+  --fcs-light: #F4F7F1;     /* Off-White */
+  --fcs-surface: #FFFFFF;
+  --fcs-surface-alt: #FAFCF8;
+  --fcs-tint: #EAF3E5;
+  --fcs-border: #E3E8E1;
+  --fcs-border-strong: #CFD9CB;
+
+  /* ---------- Degrades ---------- */
+  --fcs-gradient: linear-gradient(135deg, var(--fcs-primary), var(--fcs-secondary));
+  --fcs-gradient-soft: linear-gradient(160deg, #FFFFFF, var(--fcs-light));
+
+  /* ---------- Typographie ---------- */
+  --fcs-font-heading: 'Poppins', 'Segoe UI', system-ui, sans-serif;
+  --fcs-font-body: 'Inter', 'Segoe UI', system-ui, Arial, sans-serif;
+
+  /* Echelle fluide : s'adapte a la largeur sans media query. */
+  --fcs-text-xs: 0.78rem;
+  --fcs-text-sm: 0.875rem;
+  --fcs-text-base: 1rem;
+  --fcs-text-lg: clamp(1.05rem, 0.4vw + 0.95rem, 1.18rem);
+  --fcs-text-xl: clamp(1.25rem, 1vw + 1rem, 1.6rem);
+  --fcs-text-2xl: clamp(1.6rem, 2vw + 1.1rem, 2.3rem);
+  --fcs-text-3xl: clamp(2rem, 3.4vw + 1.1rem, 3.1rem);
+  --fcs-text-4xl: clamp(2.4rem, 5vw + 1rem, 4rem);
+
+  /* ---------- Espacements ---------- */
+  --fcs-space-1: 0.25rem;
+  --fcs-space-2: 0.5rem;
+  --fcs-space-3: 0.75rem;
+  --fcs-space-4: 1rem;
+  --fcs-space-5: 1.5rem;
+  --fcs-space-6: 2rem;
+  --fcs-space-7: 3rem;
+  --fcs-space-8: 4rem;
+  --fcs-space-9: 6rem;
+
+  /* Marge laterale + largeur max : la meme sur toutes les pages,
+     pour que les contenus s'alignent verticalement d'un ecran a l'autre. */
+  --fcs-gutter: clamp(1.25rem, 5vw, 4rem);
+  --fcs-max-width: 1200px;
+  --fcs-section-y: clamp(3.5rem, 8vw, 6.5rem);
+
+  /* ---------- Rayons ---------- */
+  --fcs-radius-sm: 0.5rem;
+  --fcs-radius-md: 0.875rem;
+  --fcs-radius-lg: 1.25rem;
+  --fcs-radius-xl: 1.75rem;
+  --fcs-radius-pill: 999px;
+
+  /* ---------- Elevation ---------- */
+  --fcs-shadow-xs: 0 1px 2px rgba(27, 38, 28, 0.05);
+  --fcs-shadow-sm: 0 2px 10px rgba(27, 38, 28, 0.06);
+  --fcs-shadow-md: 0 10px 30px rgba(27, 38, 28, 0.08);
+  --fcs-shadow-lg: 0 24px 48px rgba(27, 38, 28, 0.12);
+  --fcs-shadow-green: 0 12px 28px rgba(46, 107, 62, 0.28);
+
+  /* ---------- Mouvement ---------- */
+  --fcs-ease: cubic-bezier(0.4, 0, 0.2, 1);
+  --fcs-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --fcs-fast: 0.18s;
+  --fcs-normal: 0.3s;
+  --fcs-slow: 0.6s;
+
+  --fcs-header-height: 76px;
 }
 
-* { box-sizing: border-box; }
+/* ============================================================
+   Reset
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  /* Une ancre ne se cache plus derriere la navbar collante. */
+  scroll-padding-top: calc(var(--fcs-header-height) + 1rem);
+  -webkit-text-size-adjust: 100%;
+}
+
 body {
   margin: 0;
   font-family: var(--fcs-font-body);
+  font-size: var(--fcs-text-base);
+  line-height: 1.6;
   color: var(--fcs-ink);
+  background: var(--fcs-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  /* Empeche le debordement horizontal quand un halo deborde. */
+  overflow-x: hidden;
 }
+
+h1, h2, h3, h4 {
+  font-family: var(--fcs-font-heading);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  text-wrap: balance;   /* evite les titres avec un mot seul sur la 2e ligne */
+}
+
+p { text-wrap: pretty; }
+
+img, video, svg { max-width: 100%; display: block; }
+
+button, input, select, textarea { font: inherit; color: inherit; }
+
+/* Le footer reste en bas meme si la page est courte. */
+#root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+}
+main { flex: 1 0 auto; }
+
+/* ============================================================
+   Accessibilite
+   ============================================================ */
+
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid rgba(46, 107, 62, 0.4);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Respecte le reglage systeme "reduire les animations". */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ============================================================
+   Animations partagees
+   ============================================================ */
+
+@keyframes fcs-rise {
+  from { opacity: 0; transform: translateY(26px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@keyframes fcs-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fcs-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Reveal au scroll : l'element est pose, puis "monte" quand il entre
+   dans l'ecran (classe ajoutee par le hook useInView). */
+.fcs-reveal {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity var(--fcs-slow) var(--fcs-ease-out),
+              transform var(--fcs-slow) var(--fcs-ease-out);
+}
+.fcs-reveal[data-visible='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ============================================================
+   Arabe : sens de lecture inverse
+   ============================================================ */
+
+[dir='rtl'] body { font-family: 'Cairo', var(--fcs-font-body); }

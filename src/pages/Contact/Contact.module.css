@@ -1,247 +1,301 @@
 .page {
-  padding: 80px 6vw 100px;
-  background: #F4F7F1;
+  max-width: var(--fcs-max-width);
+  margin: 0 auto;
+  padding: var(--fcs-section-y) var(--fcs-gutter);
 }
 
 .layout {
   display: grid;
-  grid-template-columns: 2fr 1fr;
-  gap: 32px;
-  max-width: 1160px;
-  margin: 0 auto;
+  grid-template-columns: minmax(0, 1.9fr) minmax(0, 1fr);
+  gap: var(--fcs-space-5);
   align-items: start;
 }
 
-/* --- Carte formulaire --- */
+/* ============================================================
+   Carte formulaire
+   ============================================================ */
+
 .formCard {
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 44px 40px;
-  box-shadow: 0 8px 28px rgba(27, 38, 28, 0.07);
+  background: var(--fcs-surface);
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-xl);
+  padding: clamp(1.75rem, 4vw, 2.75rem);
+  box-shadow: var(--fcs-shadow-md);
+  animation: fcs-rise 0.6s var(--fcs-ease-out) both;
 }
 
 .formCard h1 {
-  font-family: var(--fcs-font-heading);
+  font-size: var(--fcs-text-2xl);
   font-weight: 700;
-  font-size: 32px;
-  color: #1B261C;
-  margin: 0 0 10px;
-  line-height: 1.25;
+  color: var(--fcs-ink);
+  margin: 0 0 var(--fcs-space-2);
 }
 
 .intro {
-  font-family: var(--fcs-font-body);
-  color: #5c6c60;
-  margin: 0 0 32px;
-  line-height: 1.6;
+  color: var(--fcs-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--fcs-space-5);
+  padding-bottom: var(--fcs-space-5);
+  border-bottom: 1px solid var(--fcs-border);
 }
 
+/* .field porte deja une marge basse : uniquement un gap horizontal ici,
+   sinon l'espacement entre les lignes serait double. */
 .row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 20px;
+  column-gap: var(--fcs-space-4);
 }
 
 .field {
   display: flex;
   flex-direction: column;
-  margin-bottom: 20px;
+  margin-bottom: var(--fcs-space-5);
 }
 
 .field label {
   font-family: var(--fcs-font-heading);
   font-weight: 600;
-  font-size: 13.5px;
-  color: #1B261C;
-  margin-bottom: 8px;
+  font-size: var(--fcs-text-sm);
+  color: var(--fcs-ink);
+  margin-bottom: var(--fcs-space-2);
 }
 
 .field input,
 .field select,
 .field textarea {
-  font-family: var(--fcs-font-body);
-  font-size: 14.5px;
-  color: #1B261C;
-  border: 1.5px solid #e3e8e1;
-  border-radius: 10px;
-  padding: 12px 14px;
-  background: #fbfcfa;
-  transition: border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  width: 100%;
+  font-size: var(--fcs-text-sm);
+  color: var(--fcs-ink);
+  background: var(--fcs-surface-alt);
+  border: 1.5px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-sm);
+  padding: 0.8rem 0.9rem;
   outline: none;
+  transition: border-color var(--fcs-fast) var(--fcs-ease),
+              box-shadow var(--fcs-fast) var(--fcs-ease),
+              background var(--fcs-fast) var(--fcs-ease);
 }
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover { border-color: var(--fcs-border-strong); }
 
 .field input:focus,
 .field select:focus,
 .field textarea:focus {
-  border-color: #2E6B3E;
-  background: #ffffff;
-  box-shadow: 0 0 0 4px rgba(46, 107, 62, 0.1);
+  border-color: var(--fcs-primary);
+  background: var(--fcs-surface);
+  box-shadow: 0 0 0 4px rgba(46, 107, 62, 0.13);
 }
 
-.field textarea {
-  resize: vertical;
-  min-height: 120px;
+.field textarea { resize: vertical; min-height: 120px; }
+
+/* ---------- Etat d'erreur ---------- */
+.invalid { border-color: #C0453B !important; background: #FEF7F6 !important; }
+.invalid:focus { box-shadow: 0 0 0 4px rgba(192, 69, 59, 0.14) !important; }
+
+.errorText {
+  display: block;
+  margin-top: var(--fcs-space-2);
+  color: #C0453B;
+  font-size: var(--fcs-text-xs);
+  font-weight: 500;
+  animation: fcs-fade var(--fcs-normal) var(--fcs-ease) both;
 }
 
+/* ---------- Consentement ---------- */
 .consent {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 13.5px;
-  color: #5c6c60;
-  margin-bottom: 28px;
+  gap: var(--fcs-space-3);
+  font-family: var(--fcs-font-body) !important;
+  font-weight: 400 !important;
+  font-size: var(--fcs-text-sm);
+  color: var(--fcs-muted);
   cursor: pointer;
+  margin-bottom: 0 !important;
 }
 .consent input {
+  width: auto !important;
   margin-top: 3px;
-  accent-color: #2E6B3E;
+  accent-color: var(--fcs-primary);
+  flex-shrink: 0;
 }
 
+/* ---------- Bouton d'envoi ---------- */
 .submitBtn {
   width: 100%;
-  background: #2E6B3E;
+  margin-top: var(--fcs-space-5);
+  background: var(--fcs-primary);
   color: #fff;
   border: none;
-  border-radius: 12px;
-  padding: 15px;
+  border-radius: var(--fcs-radius-pill);
+  padding: 1rem;
   font-family: var(--fcs-font-heading);
-  font-weight: 700;
-  font-size: 15px;
+  font-weight: 600;
+  font-size: var(--fcs-text-base);
   cursor: pointer;
-  transition: background 0.25s ease, transform 0.15s ease;
+  box-shadow: var(--fcs-shadow-green);
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-fast) var(--fcs-ease),
+              box-shadow var(--fcs-normal) var(--fcs-ease);
 }
 .submitBtn:hover:not(:disabled) {
-  background: #245831;
+  background: var(--fcs-primary-dark);
   transform: translateY(-2px);
+  box-shadow: 0 18px 34px rgba(46, 107, 62, 0.34);
 }
-.submitBtn:disabled {
-  opacity: 0.7;
-  cursor: default;
-}
+.submitBtn:disabled { opacity: 0.65; cursor: progress; }
 
-/* --- Barre laterale --- */
+/* ============================================================
+   Barre laterale
+   ============================================================ */
+
 .sidebar {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: var(--fcs-space-4);
+  /* La navbar est collante : on decale pour ne pas passer dessous. */
   position: sticky;
-  top: 24px;
+  top: calc(var(--fcs-header-height) + var(--fcs-space-4));
+  animation: fcs-rise 0.6s var(--fcs-ease-out) 0.1s both;
 }
 
 .contactCard,
 .brandCard {
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 28px 24px;
-  box-shadow: 0 8px 28px rgba(27, 38, 28, 0.06);
+  background: var(--fcs-surface);
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-lg);
+  padding: var(--fcs-space-5);
+  box-shadow: var(--fcs-shadow-sm);
 }
 
-.contactCard h3 {
-  font-family: var(--fcs-font-heading);
-  font-size: 17px;
-  color: #1B261C;
-  margin: 0 0 20px;
+.cardHeading {
+  font-size: var(--fcs-text-base);
+  font-weight: 700;
+  color: var(--fcs-ink);
+  margin: 0 0 var(--fcs-space-4);
 }
 
+/* Lignes cliquables (mailto / tel). */
 .contactRow {
   display: flex;
-  gap: 14px;
-  margin-bottom: 18px;
+  align-items: center;
+  gap: var(--fcs-space-3);
+  padding: var(--fcs-space-2);
+  margin: 0 calc(var(--fcs-space-2) * -1);
+  border-radius: var(--fcs-radius-sm);
+  text-decoration: none;
+  color: inherit;
+  transition: background var(--fcs-fast) var(--fcs-ease);
 }
-.contactRow:last-child { margin-bottom: 0; }
+.contactRow:hover { background: var(--fcs-tint); }
+.contactRow + .contactRow { margin-top: var(--fcs-space-2); }
 
 .contactRow strong {
   display: block;
   font-family: var(--fcs-font-heading);
-  font-size: 13px;
-  color: #1B261C;
+  font-size: var(--fcs-text-xs);
+  color: var(--fcs-ink);
 }
-.contactRow p {
-  margin: 2px 0 0;
-  font-size: 13.5px;
-  color: #5c6c60;
+
+.contactValue {
+  display: block;
+  font-size: var(--fcs-text-sm);
+  color: var(--fcs-muted);
 }
 
 .iconDot {
   flex-shrink: 0;
   width: 38px;
   height: 38px;
-  border-radius: 10px;
-  background: #eaf3e5;
-  color: #2E6B3E;
+  border-radius: var(--fcs-radius-sm);
+  background: var(--fcs-tint);
+  color: var(--fcs-primary);
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 16px;
 }
 
 .brandCard {
   text-align: center;
-  background: linear-gradient(180deg, #ffffff, #f3f8f0);
+  background: var(--fcs-gradient-soft);
 }
 .brandLogo {
-  height: 40px;
-  margin-bottom: 14px;
+  height: 54px;
+  width: auto;
+  object-fit: contain;
+  margin: 0 auto var(--fcs-space-3);
 }
 .brandCard p {
-  font-family: var(--fcs-font-body);
-  font-size: 13.5px;
-  color: #5c6c60;
+  font-size: var(--fcs-text-sm);
+  color: var(--fcs-muted);
+  line-height: 1.6;
   margin: 0;
 }
 
-/* --- Ecran de succes --- */
+/* ============================================================
+   Ecran de succes
+   ============================================================ */
+
 .successBox {
-  max-width: 460px;
-  margin: 60px auto;
-  background: #ffffff;
-  border-radius: 20px;
-  padding: 48px 36px;
+  max-width: 480px;
+  margin: 0 auto;
+  padding: clamp(2.25rem, 5vw, 3rem);
   text-align: center;
-  box-shadow: 0 8px 28px rgba(27, 38, 28, 0.08);
+  background: var(--fcs-surface);
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-xl);
+  box-shadow: var(--fcs-shadow-md);
+  animation: fcs-rise 0.5s var(--fcs-ease-out) both;
 }
+
 .successIcon {
-  width: 56px;
-  height: 56px;
-  margin: 0 auto 18px;
+  width: 64px;
+  height: 64px;
+  margin: 0 auto var(--fcs-space-4);
   border-radius: 50%;
-  background: #2E6B3E;
+  background: var(--fcs-gradient);
   color: #fff;
-  font-size: 26px;
+  font-size: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  box-shadow: var(--fcs-shadow-green);
 }
-.successBox h2 {
-  font-family: var(--fcs-font-heading);
-  color: #1B261C;
-  margin: 0 0 10px;
+
+.successBox h1 {
+  font-size: var(--fcs-text-xl);
+  color: var(--fcs-ink);
+  margin: 0 0 var(--fcs-space-2);
 }
 .successBox p {
-  color: #5c6c60;
-  margin: 0 0 24px;
-  line-height: 1.6;
+  color: var(--fcs-muted);
+  line-height: 1.7;
+  margin: 0 0 var(--fcs-space-5);
 }
+
 .secondaryBtn {
   background: transparent;
-  border: 1.5px solid #2E6B3E;
-  color: #2E6B3E;
-  border-radius: 10px;
-  padding: 12px 22px;
+  border: 1.5px solid var(--fcs-primary);
+  color: var(--fcs-primary);
+  border-radius: var(--fcs-radius-pill);
+  padding: 0.75rem 1.6rem;
   font-family: var(--fcs-font-heading);
   font-weight: 600;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              color var(--fcs-normal) var(--fcs-ease);
 }
-.secondaryBtn:hover {
-  background: #eaf3e5;
-}
+.secondaryBtn:hover { background: var(--fcs-primary); color: #fff; }
 
-/* --- Responsive --- */
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 1fr;
-  }
+/* ============================================================
+   Responsive
+   ============================================================ */
+
+@media (max-width: 920px) {
+  .layout { grid-template-columns: 1fr; }
   .sidebar {
     position: static;
     flex-direction: row;
@@ -250,10 +304,7 @@
   .contactCard, .brandCard { flex: 1 1 260px; }
 }
 
-@media (max-width: 600px) {
-  .page { padding: 56px 20px 72px; }
-  .formCard { padding: 30px 22px; }
-  .row { grid-template-columns: 1fr; gap: 0; }
-  .formCard h1 { font-size: 26px; }
+@media (max-width: 620px) {
+  .row { grid-template-columns: 1fr; }
   .sidebar { flex-direction: column; }
 }

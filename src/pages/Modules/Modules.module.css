@@ -1,179 +1,193 @@
 .section {
-  padding: 100px 6vw;
-  background: #F4F7F1; /* Off-White (charte graphique) */
+  max-width: var(--fcs-max-width);
+  margin: 0 auto;
+  padding: var(--fcs-section-y) var(--fcs-gutter);
 }
 
+/* ---------- En-tete ---------- */
 .header {
   text-align: center;
-  max-width: 640px;
-  margin: 0 auto 56px;
+  max-width: 660px;
+  margin: 0 auto var(--fcs-space-8);
+  animation: fcs-rise 0.7s var(--fcs-ease-out) both;
 }
 
 .eyebrow {
   display: inline-block;
   font-family: var(--fcs-font-heading);
+  font-size: var(--fcs-text-xs);
   font-weight: 600;
-  font-size: 13px;
-  letter-spacing: 2px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: #5C9938; /* Leaf Green */
-  margin-bottom: 12px;
+  color: var(--fcs-secondary);
+  margin-bottom: var(--fcs-space-3);
+}
+.eyebrow::after {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 2px;
+  margin: var(--fcs-space-2) auto 0;
+  border-radius: 2px;
+  background: var(--fcs-accent);
 }
 
 .title {
-  font-family: var(--fcs-font-heading);
+  font-size: var(--fcs-text-3xl);
   font-weight: 700;
-  font-size: 44px;
-  line-height: 1.15;
-  color: #1B261C; /* Ink */
-  margin: 0 0 14px;
+  color: var(--fcs-ink);
+  margin: 0 0 var(--fcs-space-3);
 }
 
 .subtitle {
-  font-family: var(--fcs-font-body);
-  font-size: 17px;
-  color: #57685d;
+  color: var(--fcs-muted);
+  font-size: var(--fcs-text-lg);
+  line-height: 1.65;
   margin: 0;
 }
 
-/* --- Grille : 4 puis 3 (grid-template gere ca tout seul) --- */
+/* ---------- Grille ---------- */
+/* auto-fit : 7 cartes se repartissent sans casse a aucune largeur. */
 .grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 28px;
-  max-width: 1280px;
-  margin: 0 auto;
+  grid-template-columns: repeat(auto-fit, minmax(265px, 1fr));
+  gap: var(--fcs-space-5);
 }
 
-/* --- Carte --- */
+/* ---------- Carte ---------- */
 .card {
   position: relative;
   display: flex;
   flex-direction: column;
-  background: #ffffff;
-  border-radius: 18px;
-  padding: 32px 26px 34px;
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-  box-shadow: 0 4px 18px rgba(27, 38, 28, 0.06);
-  border: 1px solid rgba(27, 38, 28, 0.06);
-  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+  background: var(--fcs-surface);
+  border: 1px solid var(--fcs-border);
+  border-radius: var(--fcs-radius-lg);
+  padding: var(--fcs-space-6) var(--fcs-space-5);
+  overflow: hidden;
+  box-shadow: var(--fcs-shadow-sm);
 
+  /* Etat de depart : la carte est posee, l'apparition se fait quand
+     la grille entre dans l'ecran (classe .visible). */
   opacity: 0;
-  transform: translateY(28px);
+  transform: translateY(26px);
+  transition: opacity var(--fcs-slow) var(--fcs-ease-out),
+              transform var(--fcs-slow) var(--fcs-ease-out),
+              box-shadow var(--fcs-normal) var(--fcs-ease),
+              border-color var(--fcs-normal) var(--fcs-ease);
 }
 
-.grid.visible .card {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.35s ease;
+.visible .card { opacity: 1; transform: none; }
+
+/* Liseré vertical qui se remplit au survol. */
+.card::before {
+  content: '';
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: 0;
+  width: 3px;
+  background: var(--fcs-gradient);
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform var(--fcs-normal) var(--fcs-ease-out);
 }
-.grid.visible .card:nth-child(1) { transition-delay: 0.05s; }
-.grid.visible .card:nth-child(2) { transition-delay: 0.12s; }
-.grid.visible .card:nth-child(3) { transition-delay: 0.19s; }
-.grid.visible .card:nth-child(4) { transition-delay: 0.26s; }
-.grid.visible .card:nth-child(5) { transition-delay: 0.33s; }
-.grid.visible .card:nth-child(6) { transition-delay: 0.40s; }
-.grid.visible .card:nth-child(7) { transition-delay: 0.47s; }
+.card:hover::before { transform: scaleY(1); }
 
 .card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 24px 40px rgba(46, 107, 62, 0.18);
-  border-color: #2E6B3E;
+  transform: translateY(-8px);
+  box-shadow: var(--fcs-shadow-md);
+  border-color: rgba(46, 107, 62, 0.32);
 }
 
 .number {
   font-family: var(--fcs-font-heading);
+  font-size: var(--fcs-text-xs);
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 1px;
-  color: #A4D152; /* Lime Accent */
-  margin-bottom: 18px;
+  letter-spacing: 0.14em;
+  color: var(--fcs-accent);
+  margin-bottom: var(--fcs-space-4);
 }
 
 .iconBox {
-  position: relative;
-  width: 56px;
-  height: 56px;
-  border-radius: 14px;
-  background: #eaf3e5;
+  width: 54px;
+  height: 54px;
+  border-radius: var(--fcs-radius-md);
+  background: var(--fcs-tint);
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 20px;
-  transition: background 0.3s ease, transform 0.3s ease;
+  margin-bottom: var(--fcs-space-4);
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-normal) var(--fcs-ease-out);
 }
 .card:hover .iconBox {
-  background: #2E6B3E; /* Deep Forest Green */
-  transform: scale(1.08) rotate(-4deg);
+  background: var(--fcs-primary);
+  transform: scale(1.08) rotate(-5deg);
 }
 
-.icon {
-  width: 28px;
-  height: 28px;
-}
-
-/* Repli si l'icone n'existe pas encore : rond avec l'initiale */
+/* Pastille avec l'initiale, en attendant les icones SVG definitives. */
 .iconFallback {
-  display: none;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  height: 100%;
   font-family: var(--fcs-font-heading);
   font-weight: 700;
-  font-size: 20px;
-  color: #2E6B3E;
+  font-size: var(--fcs-text-xl);
+  color: var(--fcs-primary);
+  transition: color var(--fcs-normal) var(--fcs-ease);
 }
-.card:hover .iconFallback {
-  color: #ffffff;
-}
+.card:hover .iconFallback { color: #fff; }
 
-.card h3 {
-  font-family: var(--fcs-font-heading);
+.cardTitle {
+  font-size: var(--fcs-text-lg);
   font-weight: 700;
-  font-size: 19px;
-  line-height: 1.35;
-  color: #1B261C;
-  margin: 0 0 12px;
+  color: var(--fcs-ink);
+  margin: 0 0 var(--fcs-space-2);
 }
 
-.card p {
-  font-family: var(--fcs-font-body);
-  font-size: 14.5px;
-  line-height: 1.65;
-  color: #5c6c60;
+.cardText {
+  color: var(--fcs-muted);
+  font-size: var(--fcs-text-sm);
+  line-height: 1.7;
   margin: 0;
   flex-grow: 1;
 }
 
-.arrow {
-  margin-top: 20px;
-  font-size: 18px;
-  color: #2E6B3E;
-  opacity: 0;
-  transform: translateX(-6px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+/* Le liseré part de la droite en arabe. */
+[dir='rtl'] .card::before { transform-origin: top; }
+
+/* ---------- Appel a l'action de fin de page ---------- */
+.footerCta {
+  margin-top: var(--fcs-space-8);
+  padding: var(--fcs-space-7) var(--fcs-space-6);
+  border-radius: var(--fcs-radius-xl);
+  background: var(--fcs-surface);
+  border: 1px solid var(--fcs-border);
+  box-shadow: var(--fcs-shadow-sm);
+  text-align: center;
 }
-.card:hover .arrow {
-  opacity: 1;
-  transform: translateX(0);
+.footerCta p {
+  max-width: 56ch;
+  margin: 0 auto var(--fcs-space-5);
+  color: var(--fcs-muted);
+  line-height: 1.7;
 }
 
-/* --- Responsive --- */
-@media (max-width: 1180px) {
-  .grid { grid-template-columns: repeat(3, 1fr); }
+.cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--fcs-primary);
+  color: #fff;
+  border-radius: var(--fcs-radius-pill);
+  padding: 0.9rem 1.9rem;
+  font-family: var(--fcs-font-heading);
+  font-weight: 600;
+  text-decoration: none;
+  box-shadow: var(--fcs-shadow-green);
+  transition: background var(--fcs-normal) var(--fcs-ease),
+              transform var(--fcs-fast) var(--fcs-ease);
 }
+.cta:hover { background: var(--fcs-primary-dark); transform: translateY(-3px); }
 
-@media (max-width: 820px) {
-  .grid { grid-template-columns: repeat(2, 1fr); }
-  .title { font-size: 34px; }
-}
-
-@media (max-width: 540px) {
-  .section { padding: 64px 24px; }
-  .grid { grid-template-columns: 1fr; gap: 20px; }
-  .title { font-size: 28px; }
-  .subtitle { font-size: 15px; }
+/* ---------- Responsive ---------- */
+@media (max-width: 560px) {
+  .grid { grid-template-columns: 1fr; gap: var(--fcs-space-4); }
+  .footerCta { padding: var(--fcs-space-6) var(--fcs-space-5); }
 }
